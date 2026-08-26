@@ -1,17 +1,4 @@
-"""
-GridSense — Step 1: Data Loading & Exploratory Data Analysis (EDA)
-====================================================================
-Goal of this file:
-    1. Load the real POSOCO (Power System Operation Corporation, India)
-       state-wise electricity consumption dataset.
-    2. Pick ONE state to focus the whole project on (Delhi) — real projects
-       always scope down, and Delhi has strong seasonality + a visible
-       COVID lockdown shock, both of which we WANT for a regression story.
-    3. Explore the data: missing values, trend, seasonality, weekly pattern.
-    4. Save plots to outputs/plots/ so we have visual evidence for the README.
 
-Run this with:  python src/eda.py
-"""
 
 import pandas as pd
 import matplotlib.pyplot as plt

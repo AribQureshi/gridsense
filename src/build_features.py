@@ -1,48 +1,4 @@
-"""
-GridSense — Step 3: Feature Engineering
-==========================================
-Goal:
-    Merge demand + weather data and build the feature set our regression
-    models will actually use. Every feature here is deliberate — each one
-    exists because Step 1's EDA gave us a specific reason to add it.
 
-Where each feature comes from (traceability matters for your README):
-    - temp_mean_c, temp_max_c, temp_min_c, humidity, precipitation
-        -> straight from Step 2's weather pull
-    - temp_mean_c_sq (temperature squared)
-        -> Step 1 showed demand is U-shaped in temperature (high in both
-           cold Jan/Dec AND hot May/Jun) — plain linear regression can't
-           capture a U-shape, but adding temp^2 as a feature lets a LINEAR
-           model fit a curve. This is the textbook trick for polynomial
-           regression without leaving the linear-model family.
-    - HDD / CDD (heating/cooling degree days)
-        -> the actual industry-standard way utilities featurize temperature.
-           HDD = how far below a comfort baseline (18C) the day was -> heating load
-           CDD = how far above that baseline -> cooling/AC load
-           This is more interpretable than raw temperature for a reader.
-    - day_of_year_sin / cos (cyclic encoding)
-        -> Step 1 showed strong seasonality. Encoding day-of-year as a raw
-           integer (1-365) is wrong: Dec 31 (day 365) and Jan 1 (day 1) are
-           adjacent in reality but far apart numerically. Sin/cos encoding
-           fixes that by mapping the day onto a circle.
-    - demand_lag_1, demand_lag_7
-        -> yesterday's demand and same-day-last-week are strong predictors
-           of today's demand in any load forecasting setting. This also
-           gives us a natural "naive baseline" to compare our model against.
-    - is_lockdown
-        -> Step 1 found a real demand shock during the COVID lockdown
-           (2020-03-25 to 2020-05-23). Without flagging this, the model
-           will try to "explain" the shock using temperature/season and
-           get it wrong. This flag lets the model isolate it instead.
-    - is_weekend
-        -> Step 1's day-of-week plot showed almost NO weekend effect for
-           this state-level data, but we keep the feature anyway and let
-           the model/diagnostics CONFIRM it's not useful (near-zero
-           coefficient) rather than assuming this from the plot alone.
-           That's a more rigorous way to make the same point in the report.
-
-Run this with:  python3 src/build_features.py
-"""
 
 import pandas as pd
 import numpy as np

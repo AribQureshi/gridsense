@@ -1,22 +1,4 @@
-"""
-GridSense — Step 2: Fetch Real Historical Weather Data
-=========================================================
-Goal:
-    Pull real historical daily weather for Delhi (temperature, humidity,
-    precipitation) covering the exact same date range as our demand data
-    (Jan 2019 - Jun 2020), using Open-Meteo's free Historical Weather API.
 
-    No API key needed. No signup. Just an HTTP GET request.
-
-Why these specific variables:
-    - temperature_2m_max / _min / _mean -> the core driver of AC/heating load
-    - relative_humidity_2m_mean         -> humidity affects "felt" temperature
-                                            and AC load independently of temp
-    - precipitation_sum                 -> rain days often show reduced
-                                            commercial/outdoor activity
-
-Run this with:  python3 src/fetch_weather.py
-"""
 
 import requests
 import pandas as pd
