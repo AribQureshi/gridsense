@@ -171,16 +171,23 @@ def models_compare():
 @app.get("/diagnostics")
 def diagnostics():
     vif_path = "outputs/vif_scores.csv"
-    if not os.path.exists(vif_path):
-        raise HTTPException(404, f"{vif_path} not found. Run src/train_models.py first.")
+    summary_path = "outputs/diagnostics_summary.json"
+    if not os.path.exists(vif_path) or not os.path.exists(summary_path):
+        raise HTTPException(404, "Diagnostics files not found. Run src/train_models.py first.")
 
     vif_df = pd.read_csv(vif_path)
     # Replace inf with a large finite sentinel for JSON serialization (JSON
     # has no native concept of infinity)
     vif_df["VIF"] = vif_df["VIF"].replace(np.inf, 999999).round(2)
 
+    import json
+    with open(summary_path) as f:
+        summary = json.load(f)
+
     return {
         "vif_scores": vif_df.to_dict(orient="records"),
+        "breusch_pagan": summary["breusch_pagan"],
+        "cooks_distance": summary["cooks_distance"],
         "note": "VIF > 10 indicates significant multicollinearity. "
                 "A value of 999999 represents mathematical infinity (perfect collinearity).",
     }

@@ -1,0 +1,66 @@
+:root {
+  /* --- Color tokens ---
+     Grounded in the subject matter: this is an energy-grid forecasting
+     console. Amber = heat/cooling-load, teal = cold/heating-load — these
+     aren't decorative, they map directly to CDD/HDD in the data. */
+  --bg: #0b1220;
+  --surface: #121b2e;
+  --surface-2: #182238;
+  --border: #26324a;
+  --text: #e7ecf5;
+  --text-muted: #8b96ab;
+  --accent-heat: #f2994a;
+  --accent-cool: #5eead4;
+  --accent-alert: #ef6461;
+  --accent-good: #34d399;
+
+  --font-sans: "IBM Plex Sans", -apple-system, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  --radius: 6px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 600;
+  margin: 0;
+}
+
+.mono {
+  font-family: var(--font-mono);
+}
+
+button {
+  font-family: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent-cool);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "breusch_pagan": {
+    "statistic": 18.2875,
+    "p_value": 0.1072,
+    "heteroscedastic": false
+  },
+  "cooks_distance": {
+    "n_influential": 24,
+    "total_points": 468,
+    "threshold": 0.00855
+  }
+}

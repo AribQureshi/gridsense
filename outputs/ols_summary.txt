@@ -4,7 +4,7 @@ Dep. Variable:              demand_mu   R-squared:                       0.703
 Model:                            OLS   Adj. R-squared:                  0.696
 Method:                 Least Squares   F-statistic:                     98.09
 Date:                Fri, 04 Sep 2026   Prob (F-statistic):          1.11e-112
-Time:                        01:58:12   Log-Likelihood:                -1883.8
+Time:                        02:31:03   Log-Likelihood:                -1883.8
 No. Observations:                 468   AIC:                             3792.
 Df Residuals:                     456   BIC:                             3841.
 Df Model:                          11                                         

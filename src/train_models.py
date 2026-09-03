@@ -268,6 +268,27 @@ plt.close()
 
 print(f"\nInfluential points flagged by Cook's distance (> 4/n): {n_influential} out of {len(train_df)}")
 
+# ---------------------------------------------------------------------
+# 9. Save a diagnostics summary JSON -- this is what the API's
+#    /diagnostics endpoint reads, so the frontend can display Breusch-Pagan
+#    and Cook's distance results alongside VIF, not just VIF alone.
+# ---------------------------------------------------------------------
+import json
+diagnostics_summary = {
+    "breusch_pagan": {
+        "statistic": round(float(bp_stat), 4),
+        "p_value": round(float(bp_pvalue), 4),
+        "heteroscedastic": bool(bp_pvalue < 0.05),
+    },
+    "cooks_distance": {
+        "n_influential": int(n_influential),
+        "total_points": int(len(train_df)),
+        "threshold": round(float(threshold), 5),
+    },
+}
+with open("outputs/diagnostics_summary.json", "w") as f:
+    json.dump(diagnostics_summary, f, indent=2)
+
 print("\n=== DONE ===")
-print("Saved: model comparison CSV, VIF scores CSV, OLS summary txt,")
+print("Saved: model comparison CSV, VIF scores CSV, OLS summary txt, diagnostics summary JSON,")
 print("       best model + scaler (.pkl), and 3 diagnostic plots.")
