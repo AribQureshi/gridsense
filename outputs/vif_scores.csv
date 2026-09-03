@@ -1,0 +1,14 @@
+feature,VIF
+const,0.0
+demand_lag_1,1.09119922743153
+demand_lag_7,1.0304957967248929
+is_weekend,1.005925273409119
+is_lockdown,1.3911006557831573
+day_of_year_sin,3.192682571711594
+day_of_year_cos,15.707415565750706
+temp_mean_c,inf
+temp_mean_c_sq,313.41928012892066
+hdd,inf
+cdd,inf
+humidity_mean_pct,5.220796715995314
+precipitation_mm,1.4181966903290624

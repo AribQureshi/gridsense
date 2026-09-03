@@ -1,0 +1,6 @@
+,RMSE,MAE,R2
+Baseline (lag + calendar only),13.8387,7.9033,0.6418
+Baseline + Weather,13.6091,7.7556,0.6536
+Ridge,13.8849,8.3075,0.6394
+Lasso,13.3471,7.4342,0.6668
+ElasticNet,13.4437,7.6431,0.662

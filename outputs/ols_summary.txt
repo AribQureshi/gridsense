@@ -1,0 +1,38 @@
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:              demand_mu   R-squared:                       0.703
+Model:                            OLS   Adj. R-squared:                  0.696
+Method:                 Least Squares   F-statistic:                     98.09
+Date:                Fri, 04 Sep 2026   Prob (F-statistic):          1.11e-112
+Time:                        01:58:12   Log-Likelihood:                -1883.8
+No. Observations:                 468   AIC:                             3792.
+Df Residuals:                     456   BIC:                             3841.
+Df Model:                          11                                         
+Covariance Type:            nonrobust                                         
+=====================================================================================
+                        coef    std err          t      P>|t|      [0.025      0.975]
+-------------------------------------------------------------------------------------
+const                 0.2665      0.120      2.222      0.027       0.031       0.502
+demand_lag_1          0.8068      0.027     30.261      0.000       0.754       0.859
+demand_lag_7         -0.1462      0.026     -5.623      0.000      -0.197      -0.095
+is_weekend           -0.5589      1.408     -0.397      0.692      -3.325       2.208
+is_lockdown          -4.8492      3.210     -1.511      0.132     -11.156       1.458
+day_of_year_sin       0.5701      1.600      0.356      0.722      -2.575       3.715
+day_of_year_cos       0.2930      3.702      0.079      0.937      -6.983       7.569
+temp_mean_c           0.8886      0.754      1.179      0.239      -0.593       2.370
+temp_mean_c_sq        0.0278      0.032      0.858      0.391      -0.036       0.091
+hdd                   1.6960      0.728      2.329      0.020       0.265       3.127
+cdd                  -2.2123      1.445     -1.531      0.127      -5.053       0.628
+humidity_mean_pct     0.0478      0.081      0.588      0.557      -0.112       0.207
+precipitation_mm     -0.1978      0.184     -1.074      0.283      -0.560       0.164
+==============================================================================
+Omnibus:                      107.537   Durbin-Watson:                   1.852
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):             1358.691
+Skew:                           0.581   Prob(JB):                    9.21e-296
+Kurtosis:                      11.266   Cond. No.                     4.96e+18
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The smallest eigenvalue is 8.94e-30. This might indicate that there are
+strong multicollinearity problems or that the design matrix is singular.
